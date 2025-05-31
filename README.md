@@ -1,36 +1,159 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# سیستم قیمت‌گذاری الکترونیک
 
-## Getting Started
+سیستمی جامع برای مدیریت قطعات الکترونیکی، طراحی بردها و محاسبه قیمت دستگاه‌ها
 
-First, run the development server:
+## 🚀 ویژگی‌ها
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **مدیریت قطعات**: افزودن، ویرایش و حذف قطعات الکترونیکی
+- **طراحی برد**: کشیدن و رها کردن قطعات برای ایجاد بردهای مدار چاپی
+- **ساخت دستگاه**: ترکیب بردها برای ایجاد دستگاه‌های پیچیده
+- **محاسبه قیمت خودکار**: محاسبه قیمت نهایی با در نظر گیری تمام هزینه‌ها
+- **پشتیبانی کامل از فارسی**: اعداد، متن و جهت نوشتار فارسی
+
+## 🛠 تکنولوژی‌ها
+
+- **Frontend**: Next.js 15 + TypeScript
+- **Styling**: TailwindCSS
+- **UI Components**: کامپوننت‌های سفارشی
+- **Drag & Drop**: @dnd-kit
+- **Icons**: Lucide React
+- **Font**: Vazirmatn (Google Fonts)
+
+## 📁 ساختار پروژه
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx         # Layout اصلی
+│   ├── page.tsx           # صفحه اصلی
+│   └── globals.css        # استایل‌های سراسری
+├── components/            # کامپوننت‌های React
+│   ├── ui/               # کامپوننت‌های UI پایه
+│   │   └── Farsisaz.tsx  # کامپوننت فارسی‌ساز
+│   ├── layout/           # کامپوننت‌های Layout
+│   ├── parts/            # کامپوننت‌های مربوط به قطعات
+│   ├── boards/           # کامپوننت‌های مربوط به بردها
+│   └── devices/          # کامپوننت‌های مربوط به دستگاه‌ها
+├── types/                # تعریف Type های TypeScript
+│   └── index.ts          # انواع داده‌ها
+├── utils/                # توابع کمکی
+│   ├── farsisaz.ts       # توابع فارسی‌سازی
+│   └── cn.ts             # ترکیب کلاس‌های CSS
+├── hooks/                # Custom Hooks
+├── data/                 # داده‌های نمونه
+└── ...
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 کامپوننت Farsisaz
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+کامپوننت قدرتمند برای مدیریت متن و اعداد فارسی:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```tsx
+import { PersianText, PersianNumber, PersianPrice } from '@/components/ui/Farsisaz';
 
-## Learn More
+// نمایش متن فارسی
+<PersianText>سلام دنیا</PersianText>
 
-To learn more about Next.js, take a look at the following resources:
+// نمایش عدد فارسی
+<PersianNumber value={12345} />
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+// نمایش قیمت فارسی
+<PersianPrice amount={1250000} currency="ریال" />
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚦 راه‌اندازی
 
-## Deploy on Vercel
+### پیش‌نیازها
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Node.js 18+ 
+- npm یا yarn
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### نصب
+
+```bash
+# کلون کردن پروژه
+git clone [repository-url]
+cd electronics-pricing
+
+# نصب وابستگی‌ها
+npm install
+
+# اجرای پروژه در حالت توسعه
+npm run dev
+```
+
+پروژه در آدرس `http://localhost:3000` در دسترس خواهد بود.
+
+## 📋 مراحل توسعه
+
+### ✅ مرحله 1: راه‌اندازی پایه (تکمیل شده)
+- [x] ایجاد پروژه Next.js با TypeScript
+- [x] تنظیم TailwindCSS
+- [x] ایجاد کامپوننت Farsisaz
+- [x] تنظیم فونت فارسی (Vazirmatn)
+- [x] ساختار فولدرها و فایل‌ها
+- [x] تعریف Type های اصلی
+
+### 🔄 مرحله 2: کامپوننت‌های پایه (در حال انجام)
+- [ ] Layout اصلی
+- [ ] Header/Navigation
+- [ ] Sidebar
+- [ ] Cards و Buttons
+- [ ] Modals و Forms
+
+### ⏳ مرحله 3: مدیریت قطعات
+- [ ] لیست قطعات
+- [ ] اضافه/ویرایش/حذف قطعات
+- [ ] جستجو و فیلتر
+- [ ] وارد کردن داده‌های CSV
+
+### ⏳ مرحله 4: طراحی برد
+- [ ] محیط Drag & Drop
+- [ ] انتخاب قطعات از سایدبار
+- [ ] نمایش برد
+- [ ] محاسبه قیمت برد
+
+### ⏳ مرحله 5: طراحی دستگاه
+- [ ] محیط Drag & Drop برای بردها
+- [ ] انتخاب بردها از سایدبار
+- [ ] محاسبه قیمت کل دستگاه
+
+## 🎯 ویژگی‌های کلیدی
+
+### فارسی‌سازی کامل
+- تبدیل خودکار اعداد انگلیسی به فارسی
+- پشتیبانی از جهت نوشتار راست به چپ (RTL)
+- فرمت‌بندی قیمت‌ها با جداکننده هزارگان فارسی
+- فونت فارسی بهینه (Vazirmatn)
+
+### طراحی واکنش‌گرا
+- سازگار با تمام اندازه‌های صفحه
+- رابط کاربری مدرن و زیبا
+- انیمیشن‌های نرم و طبیعی
+
+### Type Safety
+- استفاده کامل از TypeScript
+- تعریف دقیق انواع داده‌ها
+- بررسی خطا در زمان کامپایل
+
+## 🤝 مشارکت
+
+برای مشارکت در پروژه:
+
+1. Fork کنید
+2. Branch جدید ایجاد کنید (`git checkout -b feature/amazing-feature`)
+3. تغییرات را commit کنید (`git commit -m 'Add amazing feature'`)
+4. Push کنید (`git push origin feature/amazing-feature`)
+5. Pull Request ایجاد کنید
+
+## 📝 لایسنس
+
+این پروژه تحت لایسنس MIT منتشر شده است.
+
+## 📞 تماس
+
+برای سوالات و پیشنهادات با ما در تماس باشید.
+
+---
+
+**نوت**: این پروژه در حال توسعه است و ویژگی‌های جدید به تدریج اضافه خواهند شد.
