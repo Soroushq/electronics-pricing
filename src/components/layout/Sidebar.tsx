@@ -487,7 +487,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Mobile Overlay */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
           onClick={onClose}
         />
       )}
@@ -500,12 +500,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
           // Width
           "w-72",
           // Mobile: Fixed overlay that slides in/out
-          "fixed top-16 right-0 h-[calc(100vh-64px)] z-50",
-        isOpen ? "translate-x-0" : "translate-x-full",
+          "fixed top-16 right-0 h-[calc(100vh-64px)] z-40",
+          isOpen ? "translate-x-0" : "translate-x-full",
           // Desktop: Static positioned, no overlay
           "lg:static lg:top-0 lg:h-full lg:z-auto lg:translate-x-0",
           !isOpen && "lg:hidden",
-        className
+          className
         )}
       >
         <div className="h-full overflow-y-auto">

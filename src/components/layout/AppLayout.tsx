@@ -68,7 +68,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
 
         {/* Main Content */}
         <main className={cn(
-          "flex-1 transition-all duration-300 ease-in-out overflow-hidden",
+          "flex-1 transition-all duration-300 ease-in-out overflow-hidden relative z-0",
           // Push content when sidebar is open on desktop
           showSidebar && isSidebarOpen && "flex-1 transition-all duration-300 ease-in-out overflow-hidden",
           className
