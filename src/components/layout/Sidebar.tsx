@@ -501,11 +501,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
           "w-72",
           // Mobile: Fixed overlay that slides in/out
           "fixed top-16 right-0 h-[calc(100vh-64px)] z-40",
-          isOpen ? "translate-x-0" : "translate-x-full",
+        isOpen ? "translate-x-0" : "translate-x-full",
           // Desktop: Static positioned, no overlay
           "lg:static lg:top-0 lg:h-full lg:z-auto lg:translate-x-0",
           !isOpen && "lg:hidden",
-          className
+        className
         )}
       >
         <div className="h-full overflow-y-auto">

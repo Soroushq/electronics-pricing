@@ -1,0 +1,19 @@
+{
+  "/api/boards/route": "app/api/boards/route.js",
+  "/api/devices/route": "app/api/devices/route.js",
+  "/api/test-db/route": "app/api/test-db/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/boards/designer/page": "app/boards/designer/page.js",
+  "/devices/builder/page": "app/devices/builder/page.js",
+  "/page": "app/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/devices/orders/page": "app/devices/orders/page.js",
+  "/devices/page": "app/devices/page.js",
+  "/parts/add/page": "app/parts/add/page.js",
+  "/parts/orders/page": "app/parts/orders/page.js",
+  "/boards/orders/page": "app/boards/orders/page.js",
+  "/settings/page": "app/settings/page.js",
+  "/under-construction/page": "app/under-construction/page.js",
+  "/boards/page": "app/boards/page.js",
+  "/parts/page": "app/parts/page.js"
+}

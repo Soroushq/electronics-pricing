@@ -1,0 +1,19 @@
+{
+  "/api/boards/route": "/api/boards",
+  "/api/devices/route": "/api/devices",
+  "/api/test-db/route": "/api/test-db",
+  "/favicon.ico/route": "/favicon.ico",
+  "/boards/designer/page": "/boards/designer",
+  "/devices/builder/page": "/devices/builder",
+  "/page": "/",
+  "/_not-found/page": "/_not-found",
+  "/devices/orders/page": "/devices/orders",
+  "/devices/page": "/devices",
+  "/parts/add/page": "/parts/add",
+  "/parts/orders/page": "/parts/orders",
+  "/boards/orders/page": "/boards/orders",
+  "/settings/page": "/settings",
+  "/under-construction/page": "/under-construction",
+  "/boards/page": "/boards",
+  "/parts/page": "/parts"
+}
