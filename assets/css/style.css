@@ -1,0 +1,121 @@
+/* استایل‌های عمومی */
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* استایل‌های جدول */
+.table {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.table th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* استایل‌های فرم */
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* استایل‌های دکمه */
+.btn {
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+/* استایل‌های کارت */
+.card {
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* استایل‌های هشدار */
+.alert {
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* استایل‌های فوتر */
+.footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* استایل‌های ریسپانسیو */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .table-responsive {
+        margin: 0 -15px;
+    }
+}
+
+/* استایل‌های سفارشی */
+.price {
+    font-weight: bold;
+    color: #28a745;
+}
+
+.quantity {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.description {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* استایل‌های لودینگ */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading-spinner {
+    width: 3rem;
+    height: 3rem;
+} 
