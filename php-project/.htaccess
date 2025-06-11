@@ -1,0 +1,54 @@
+# Electronics Pricing System Configuration
+DirectoryIndex index.php index.html
+
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Enable CORS for API calls (if mod_headers is available)
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
+
+# Allow access to all files and directories
+Options +FollowSymLinks
+Options -Indexes
+
+# API routes
+RewriteRule ^api/(.*)$ backend/api/$1 [QSA,L]
+
+# Allow access to public files directly
+RewriteCond %{REQUEST_URI} ^/.*\.(php|html|css|js|png|jpg|jpeg|gif|ico)$ [NC]
+RewriteRule .* - [L]
+
+# Default charset
+AddDefaultCharset UTF-8
+
+# File permissions
+<Files "*">
+    Require all granted
+</Files>
+
+# Directory permissions
+<Directory "*">
+    Require all granted
+    AllowOverride All
+</Directory>
+
+# Enable compression (if available)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Error pages
+ErrorDocument 403 /price-electronics/setup.php
+ErrorDocument 404 /price-electronics/public/index.php 

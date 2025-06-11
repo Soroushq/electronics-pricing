@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سیستم مدیریت قیمت‌گذاری الکترونیک</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', 'Tahoma', 'Arial', sans-serif;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        
+        function Dashboard() {
+            const [activeTab, setActiveTab] = useState('test');
+            
+            return (
+                <div className="min-h-screen">
+                    <header className="bg-white/80 backdrop-blur-lg border-b border-gray-200 sticky top-0 z-50">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex justify-between items-center h-16">
+                                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                    🔧 سیستم قیمت‌گذاری الکترونیک
+                                </h1>
+                                <div className="text-sm text-gray-600">
+                                    آرام کنترل
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    
+                    <nav className="bg-white/60 backdrop-blur-lg border-b border-gray-200">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex space-x-8 space-x-reverse overflow-x-auto">
+                                <button
+                                    onClick={() => setActiveTab('test')}
+                                    className="flex items-center space-x-2 space-x-reverse py-4 px-6 text-sm font-medium border-b-2 border-blue-500 text-blue-600"
+                                >
+                                    <span className="text-lg">🧪</span>
+                                    <span>تست سیستم</span>
+                                </button>
+                            </div>
+                        </div>
+                    </nav>
+                    
+                    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                        <TestTab />
+                    </main>
+                </div>
+            );
+        }
+        
+        function TestTab() {
+            const [testResults, setTestResults] = useState({});
+            const [loading, setLoading] = useState(false);
+            
+            const runTest = async (endpoint) => {
+                setLoading(true);
+                try {
+                    const response = await fetch(`/api/${endpoint}.php`);
+                    const data = await response.json();
+                    setTestResults(prev => ({
+                        ...prev,
+                        [endpoint]: { success: true, data }
+                    }));
+                } catch (error) {
+                    setTestResults(prev => ({
+                        ...prev,
+                        [endpoint]: { success: false, error: error.message }
+                    }));
+                } finally {
+                    setLoading(false);
+                }
+            };
+            
+            const endpoints = [
+                { name: 'boards', label: 'تست API بردها', icon: '📋' },
+                { name: 'devices', label: 'تست API دستگاه‌ها', icon: '📱' },
+                { name: 'parts', label: 'تست API قطعات', icon: '🔧' },
+                { name: 'processes', label: 'تست API پردازش‌ها', icon: '⚙️' },
+                { name: 'pricing', label: 'تست API قیمت‌گذاری', icon: '💰' }
+            ];
+            
+            return (
+                <div className="space-y-6">
+                    <div className="text-center">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-4">تست سیستم API</h2>
+                        <p className="text-gray-600">برای تست هر بخش، روی دکمه‌های زیر کلیک کنید</p>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {endpoints.map((endpoint) => (
+                            <div key={endpoint.name} className="card p-6 rounded-xl shadow-lg">
+                                <div className="text-center mb-4">
+                                    <div className="text-4xl mb-2">{endpoint.icon}</div>
+                                    <h3 className="text-lg font-semibold text-gray-900">{endpoint.label}</h3>
+                                </div>
+                                
+                                <button
+                                    onClick={() => runTest(endpoint.name)}
+                                    disabled={loading}
+                                    className="w-full btn-primary text-white py-2 rounded-lg font-medium disabled:opacity-50"
+                                >
+                                    {loading ? 'در حال تست...' : 'اجرای تست'}
+                                </button>
+                                
+                                {testResults[endpoint.name] && (
+                                    <div className={`mt-4 p-3 rounded-lg text-sm ${
+                                        testResults[endpoint.name].success 
+                                            ? 'bg-green-100 text-green-800' 
+                                            : 'bg-red-100 text-red-800'
+                                    }`}>
+                                        {testResults[endpoint.name].success ? (
+                                            <div>
+                                                <div className="font-medium">✅ موفقیت‌آمیز</div>
+                                                <div className="mt-1">
+                                                    تعداد رکورد: {testResults[endpoint.name].data?.data?.length || 0}
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div>
+                                                <div className="font-medium">❌ خطا</div>
+                                                <div className="mt-1">{testResults[endpoint.name].error}</div>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                    
+                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                        <h3 className="text-lg font-semibold text-blue-900 mb-3">📊 وضعیت سیستم</h3>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div className="text-center">
+                                <div className="text-2xl text-blue-600">🗄️</div>
+                                <div className="text-sm font-medium text-blue-900">دیتابیس</div>
+                                <div className="text-xs text-blue-700">متصل</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-2xl text-green-600">🔗</div>
+                                <div className="text-sm font-medium text-green-900">API</div>
+                                <div className="text-xs text-green-700">فعال</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-2xl text-purple-600">⚙️</div>
+                                <div className="text-sm font-medium text-purple-900">سرور</div>
+                                <div className="text-xs text-purple-700">آماده</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-2xl text-orange-600">🚀</div>
+                                <div className="text-sm font-medium text-orange-900">React</div>
+                                <div className="text-xs text-orange-700">بارگذاری شده</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        
+        ReactDOM.render(<Dashboard />, document.getElementById('root'));
+    </script>
+</body>
+</html>
