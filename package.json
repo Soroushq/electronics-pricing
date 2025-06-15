@@ -12,6 +12,7 @@
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
+    "@heroicons/react": "^2.2.0",
     "@types/xlsx": "^0.0.35",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

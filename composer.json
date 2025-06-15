@@ -1,0 +1,26 @@
+{
+    "name": "electronics-pricing/php-project",
+    "description": "Electronics Pricing System PHP Project",
+    "type": "project",
+    "require": {
+        "php": ">=8.0",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "ext-mbstring": "*",
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ElectronicsPricing\\": "php-project/src/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "start": "php -S localhost:8000 -t php-project/public"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+} 

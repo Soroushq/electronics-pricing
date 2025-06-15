@@ -1,6 +1,12 @@
 # سیستم قیمت‌گذاری الکترونیک
 
-سیستمی جامع برای مدیریت قطعات الکترونیکی، طراحی بردها و محاسبه قیمت دستگاه‌ها
+سیستمی جامع برای مدیریت قطعات الکترونیکی، طراحی بردها و محاسبه قیمت دستگاه‌ها با فرانت‌اند Next.js و بک‌اند PHP
+
+## 🔗 راهنماهای مهم
+
+- **[راهنمای سریع شروع کار](./QUICK_START.md)** - برای شروع فوری
+- **[راهنمای کامل](./COMPLETE_GUIDE.md)** - مستندات جامع
+- **[صفحه مدیریت API](http://localhost:3000/api-management)** - تست اتصال بک‌اند
 
 ## 🚀 ویژگی‌ها
 
@@ -12,12 +18,21 @@
 
 ## 🛠 تکنولوژی‌ها
 
-- **Frontend**: Next.js 15 + TypeScript
+### فرانت‌اند
+- **Framework**: Next.js 14 + TypeScript
 - **Styling**: TailwindCSS
 - **UI Components**: کامپوننت‌های سفارشی
-- **Drag & Drop**: @dnd-kit
-- **Icons**: Lucide React
+- **API Client**: Custom API Service
+- **State Management**: Custom Hooks
+- **Icons**: Heroicons
 - **Font**: Vazirmatn (Google Fonts)
+
+### بک‌اند  
+- **Language**: PHP 8+
+- **Database**: MySQL
+- **API**: RESTful API
+- **Security**: Prepared Statements, CORS
+- **Features**: Pagination, Search, Filtering
 
 ## 📁 ساختار پروژه
 
